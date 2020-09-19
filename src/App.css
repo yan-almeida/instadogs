@@ -1,15 +1,18 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   color: #333;
+  padding-top: 4rem;
+
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Spectral', Georgia;
-  padding-top: 4rem;
 
   font-family: var(--type-first);
 }
+
 h1,
 h2,
 h3,
