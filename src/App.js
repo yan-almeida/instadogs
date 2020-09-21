@@ -6,7 +6,7 @@ import Footer from './Components/Footer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './Components/Login/Login';
 import './App.css';
-import { UserStorage } from './Context/UserContext';
+import { UserStorage } from './UserContext';
 
 const App = () => {
   return (

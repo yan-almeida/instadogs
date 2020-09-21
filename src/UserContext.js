@@ -1,15 +1,14 @@
 import React from 'react';
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from '../api';
+import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
 import { useNavigate } from 'react-router-dom';
 
 export const UserContext = React.createContext();
 
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null);
-  const [login, setLogin] = React.useState(null);
+  const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-
   const navigate = useNavigate();
 
   const userLogout = React.useCallback(
@@ -32,18 +31,18 @@ export const UserStorage = ({ children }) => {
     const json = await res.json();
 
     setData(json);
-    setLoading(true);
+    setLogin(true);
   };
 
   const userLogin = async (username, password) => {
     try {
-      const { url, options } = TOKEN_POST({ username, password });
-
       setError(null);
       setLoading(true);
 
+      const { url, options } = TOKEN_POST({ username, password });
+
       const res = await fetch(url, options);
-      if (!res.ok) throw new Error('Usuário inválido!');
+      if (!res.ok) throw new Error(`Erro: ${res.statusText}`);
 
       const { token } = await res.json();
 
@@ -60,7 +59,7 @@ export const UserStorage = ({ children }) => {
   };
 
   React.useEffect(() => {
-    const autoLogin = async () => {
+    async function autoLogin() {
       const token = window.localStorage.getItem('token');
 
       if (token) {
@@ -79,7 +78,7 @@ export const UserStorage = ({ children }) => {
           setLoading(false);
         }
       }
-    };
+    }
 
     autoLogin();
   }, [userLogout]);
