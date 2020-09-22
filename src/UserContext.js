@@ -11,18 +11,15 @@ export const UserStorage = ({ children }) => {
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
-  const userLogout = React.useCallback(
-    async function () {
-      setData(null);
-      setError(null);
-      setLoading(false);
-      setLogin(false);
-      window.localStorage.removeItem('token');
+  const userLogout = React.useCallback(async () => {
+    setData(null);
+    setError(null);
+    setLoading(false);
+    setLogin(false);
+    window.localStorage.removeItem('token');
 
-      navigate('/login');
-    },
-    [navigate],
-  );
+    navigate('/login');
+  }, [navigate]);
 
   const getUser = async (token) => {
     const { url, options } = USER_GET(token);
@@ -45,7 +42,7 @@ export const UserStorage = ({ children }) => {
 
       const { token } = await res.json();
       console.log(res);
-      if (!res.ok) throw new Error(`Erro: ${res.statusText}`);
+      if (!res.ok) throw new Error('Usuário não encontrado/cadastrado.');
 
       window.localStorage.setItem('token', token);
 
