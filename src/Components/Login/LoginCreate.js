@@ -27,8 +27,6 @@ const LoginCreate = () => {
     if (res.ok) userLogin(username.value, password.value); // autologin após o usuário se cadastrar, se for com sucesso
   };
 
-  console.log(error);
-
   return (
     <section className={`animeLeft`}>
       <h1 className="title">Cadastre-se</h1>
