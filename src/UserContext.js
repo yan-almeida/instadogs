@@ -17,8 +17,8 @@ export const UserStorage = ({ children }) => {
       setError(null);
       setLoading(false);
       setLogin(false);
-
       window.localStorage.removeItem('token');
+
       navigate('/login');
     },
     [navigate],
@@ -42,9 +42,10 @@ export const UserStorage = ({ children }) => {
       const { url, options } = TOKEN_POST({ username, password });
 
       const res = await fetch(url, options);
-      if (!res.ok) throw new Error(`Erro: ${res.statusText}`);
 
       const { token } = await res.json();
+      console.log(res);
+      if (!res.ok) throw new Error(`Erro: ${res.statusText}`);
 
       window.localStorage.setItem('token', token);
 
@@ -52,6 +53,9 @@ export const UserStorage = ({ children }) => {
       navigate('/conta');
     } catch (e) {
       setError(e.message);
+
+      console.log('catch', error);
+
       setLogin(false);
     } finally {
       setLoading(false);
