@@ -15,7 +15,7 @@ const UserHeader = () => {
         break;
 
       case '/account/stats':
-        setTitle('Estatisticas');
+        setTitle('Estatísticas');
         break;
 
       default:
