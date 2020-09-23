@@ -13,15 +13,15 @@ import styles from './Login.module.css';
 const Login = () => {
   const { login } = React.useContext(UserContext);
 
-  if (login === true) return <Navigate to="/conta" />;
+  if (login === true) return <Navigate to="/account" />;
   return (
     <section className={styles.login}>
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<LoginForm />} />
-          <Route path="criar" element={<LoginCreate />} />
-          <Route path="perdeu" element={<LoginPasswordLost />} />
-          <Route path="resetar" element={<LoginPasswordReset />} />
+          <Route path="create" element={<LoginCreate />} />
+          <Route path="lost" element={<LoginPasswordLost />} />
+          <Route path="reset" element={<LoginPasswordReset />} />
         </Routes>
       </div>
     </section>
