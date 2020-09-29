@@ -8,7 +8,7 @@ import styles from './PhotoCommentsForm.module.css';
 const PhotoCommentsForm = ({ id, setComments }) => {
   const [comment, setComment] = React.useState('');
 
-  const { error, request } = useFetch();
+  const { error, loading, request } = useFetch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,23 +24,42 @@ const PhotoCommentsForm = ({ id, setComments }) => {
     }
   };
 
+  console.log(loading);
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea
-        className={styles.textarea}
-        id="comment"
-        name="comment"
-        placeholder="Comente..."
-        value={comment}
-        onChange={({ target }) => setComment(target.value)}
-      />
+    <>
+      {loading ? (
+        <form className={styles.form}>
+          <textarea
+            className={styles.textarea}
+            id="comment"
+            name="comment"
+            placeholder="Comente..."
+            disabled
+          />
+          <button className={styles.button} disabled>
+            <Enviar />
+          </button>
+          <Error error={error} />
+        </form>
+      ) : (
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <textarea
+            className={styles.textarea}
+            id="comment"
+            name="comment"
+            placeholder="Comente..."
+            value={comment}
+            onChange={({ target }) => setComment(target.value)}
+          />
+          <button className={styles.button}>
+            <Enviar />
+          </button>
 
-      <button className={styles.button}>
-        <Enviar />
-      </button>
-
-      <Error error={error} />
-    </form>
+          <Error error={error} />
+        </form>
+      )}
+    </>
   );
 };
 

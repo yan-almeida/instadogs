@@ -52,6 +52,12 @@
   animation: latir 0.65s infinite;
 }
 
+.button:disabled,
+.button:disabled svg path {
+  fill: #888;
+  cursor: not-allowed;
+}
+
 @keyframes latir {
   from {
     opacity: 0;
