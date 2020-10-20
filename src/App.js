@@ -11,6 +11,7 @@ import User from './Components/User/User';
 import ProtectedRoute from './Components/Helpers/ProtectedRoute';
 import Photo from './Components/Photo/Photo';
 import UserProfile from './Components/User/UserProfile';
+import NotFound from './Components/User/NotFound';
 
 const App = () => {
   return (
@@ -21,9 +22,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login/*" element={<Login />} />
+            <ProtectedRoute path="/account/*" element={<User />} />
             <Route path="/photo/:id" element={<Photo />} />
             <Route path="/profile/:user" element={<UserProfile />} />
-            <ProtectedRoute path="/account/*" element={<User />} />
+            <ProtectedRoute path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </UserStorage>
