@@ -40,7 +40,7 @@ const PhotoContent = ({ data, single }) => {
         </div>
       </div>
 
-      <PhotoComments id={photo.id} single="true" comment={comments} />
+      <PhotoComments id={photo.id} single={single} comment={comments} />
     </div>
   );
 };
