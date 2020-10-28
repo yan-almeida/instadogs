@@ -14,8 +14,8 @@ const FeedPhotos = ({ page, user, setInfinite, setModalPhoto }) => {
       const total = 6;
       const { url, options } = PHOTOS_GET({ page, total, user });
 
-      const { response, json } = await request(url, options);
-      if (response && response.ok && json.length < total) setInfinite(false);
+      const { res, json } = await request(url, options);
+      if (res && res.ok && json.length < total) setInfinite(false);
     };
 
     fetchPhotos();
@@ -25,16 +25,18 @@ const FeedPhotos = ({ page, user, setInfinite, setModalPhoto }) => {
   if (loading) return <Loading />;
   if (data)
     return (
-      <ul className={`animeLeft ${styles.feed}`}>
-        {data &&
-          data.map((photo) => (
-            <FeedPhotosItem
-              key={photo.id}
-              photo={photo}
-              setModalPhoto={setModalPhoto}
-            />
-          ))}
-      </ul>
+      <>
+        <ul className={`animeLeft ${styles.feed}`}>
+          {data &&
+            data.map((photo) => (
+              <FeedPhotosItem
+                key={photo.id}
+                photo={photo}
+                setModalPhoto={setModalPhoto}
+              />
+            ))}
+        </ul>
+      </>
     );
   else return null;
 };
