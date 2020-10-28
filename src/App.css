@@ -7,7 +7,7 @@
 body {
   margin: 0;
   color: #333;
-  padding-top: 4rem;
+  padding-top: 0rem;
 
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Spectral', georgia;
@@ -50,7 +50,7 @@ a {
 
 .container {
   max-width: 50rem;
-  padding: 0 1rem;
+  padding: 0 2rem;
   margin: 0 auto;
 }
 
@@ -78,6 +78,16 @@ a {
   left: -5px;
   border-radius: 0.2rem;
   z-index: -1;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+.AppBody {
+  flex: 1;
 }
 
 .animeLeft {
