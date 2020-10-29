@@ -28,7 +28,7 @@ const UserStats = () => {
       <div>
         <Head title="Stats" />
 
-        <UserStatsGraphs />
+        <UserStatsGraphs data={data} />
       </div>
     );
   else return null;

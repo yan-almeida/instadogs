@@ -94,6 +94,10 @@ a {
   padding-top: 4rem;
 }
 
+.VictoryContainer {
+  height: initial !important;
+}
+
 .animeLeft {
   opacity: 0;
   transform: translateX(-20px);
