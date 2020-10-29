@@ -25,7 +25,7 @@ const UserHeader = () => {
   }, [pathname]);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} headerSpacing`}>
       <h1 className="title">{title && title}</h1>
 
       <UserHeaderNav />

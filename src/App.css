@@ -49,7 +49,7 @@ a {
 }
 
 .container {
-  max-width: 50rem;
+  max-width: 57rem;
   padding: 0 2rem;
   margin: 0 auto;
 }
@@ -88,6 +88,10 @@ a {
 
 .AppBody {
   flex: 1;
+}
+
+.headerSpacing {
+  padding-top: 4rem;
 }
 
 .animeLeft {

@@ -120,3 +120,15 @@ export const PASSWORD_RESET = (body) => {
     },
   };
 };
+
+export const STATS_GET = (token) => {
+  return {
+    url: `${API_URL}/api/password/reset`,
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};

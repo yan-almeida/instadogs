@@ -38,7 +38,7 @@ const Feed = ({ user }) => {
   }, [infinite]);
 
   return (
-    <div style={{ paddingTop: '4rem' }}>
+    <div className="headerSpacing">
       <Head title="Account" />
       {modalPhoto && (
         <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />

@@ -23,7 +23,7 @@ const UserPhotoPost = () => {
     if (data) navigate('/account');
   }, [data, navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -37,7 +37,7 @@ const UserPhotoPost = () => {
 
     if (token) {
       const { url, options } = PHOTO_POST(formData, token);
-      request(url, options);
+      await request(url, options);
     }
   };
 
